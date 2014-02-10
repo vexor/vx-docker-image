@@ -1,0 +1,16 @@
+{
+  "builders": [
+    {
+      "type":        "docker",
+      "image":       "ubuntu:12.04",
+      "pull":        true,
+      "export_path": "precise.tar"
+    }
+  ],
+  "provisioners": [
+    {
+      "type":   "shell",
+      "script": "script/base.sh"
+    }
+  ]
+}
