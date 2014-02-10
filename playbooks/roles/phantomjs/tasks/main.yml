@@ -1,0 +1,20 @@
+- name: check installed
+  shell: test -d {{phantomjs_root}} && echo -n 'yes' || echo -n 'no'
+  changed_when: False
+  tags: phantomjs
+  register: phantomjs_installed
+
+- name: install required packages
+  apt: pkg={{item}}
+  tags: phantomjs
+  with_items:
+    - bzip2
+
+- name: download and unpack archive
+  shell: "curl -L {{phantomjs_url}} | tar -jxf - chdir=/opt"
+  tags: phantomjs
+  when: phantomjs_installed.stdout == 'no'
+
+- name: add to path
+  tags: phantomjs
+  file: src={{phantomjs_root}}/bin/phantomjs dest=/usr/local/bin/phantomjs state=link

@@ -1,0 +1,4 @@
+24c24
+<   RBENV_ROOT="${HOME}/.rbenv"
+---
+>   RBENV_ROOT="/usr/local/rbenv"

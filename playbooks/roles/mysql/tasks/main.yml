@@ -1,0 +1,10 @@
+- name: install packages
+  apt: pkg={{item}} state=latest
+  environment:
+    RUNLEVEL: '1'
+  with_items:
+    - mysql-server-{{mysql_version}}
+    - libmysqlclient-dev
+
+- name: stop mysql server
+  service: name=mysql state=stopped

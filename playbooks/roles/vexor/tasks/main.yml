@@ -1,0 +1,5 @@
+- name: create .ssh dir for vexor user
+  file: dest=/home/vexor/.ssh mode="0700" owner=vexor group=vexor
+
+- name: create default ssh config for user vexor
+  template: src=config.j2 dest=/home/vexor/.ssh/config mode="0644" owner=vexor group=vexor

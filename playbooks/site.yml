@@ -1,0 +1,23 @@
+---
+- hosts: all
+
+  roles:
+    - bootstrap
+    - vexor
+
+    - java
+    - rbenv
+    - nodejs
+    - sbt
+    - lein
+
+    - phantomjs
+
+    - postgresql
+    - redis
+    - mysql
+    - rabbitmq
+    - elasticsearch
+
+    - services
+    - cleanup

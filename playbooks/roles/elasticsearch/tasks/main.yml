@@ -1,0 +1,30 @@
+- name: check installed
+  shell: >
+    test -f {{elasticsearch_root}}/v{{elasticsearch_version}} && echo -n 'yes' || echo -n 'no'
+  register: elasticsearch_installed
+
+- name: download deb
+  get_url: dest={{elasticsearch_deb}} url={{elasticsearch_url}}
+  when: elasticsearch_installed.stdout == 'no'
+
+- name: install deb
+  shell: >
+    dpkg -i {{elasticsearch_deb}}
+  when: elasticsearch_installed.stdout == 'no'
+
+- name: stop elasticsearch service
+  service: name=elasticsearch state=stopped
+  when: elasticsearch_installed.stdout == 'no'
+
+- name: remove temp files
+  shell: rm -f {{elasticsearch_deb}}
+  when: elasticsearch_installed.stdout == 'no'
+
+- name: touch version
+  shell:
+    touch {{elasticsearch_root}}/v{{elasticsearch_version}}
+  when: elasticsearch_installed.stdout == 'no'
+
+- name: stop service
+  service: name=elasticsearch state=stopped
+  when: elasticsearch_installed.stdout == 'no'

@@ -1,0 +1,14 @@
+- name: checkout sbt-extras repo
+  tags: sbt
+  git: repo=https://github.com/paulp/sbt-extras.git dest={{sbt_root}}
+  register: sbt_repo_created
+
+- name: add sbt to path
+  tags: sbt
+  shell: >
+    cp -f {{sbt_root}}/sbt {{sbt_bin}}
+  when: sbt_repo_created | changed
+
+- name: make sbt exculatable
+  tags: sbt
+  file: dest={{sbt_bin}} mode="0755"
