@@ -31,6 +31,7 @@ ANSIBLE_HOSTS=$(pwd)/.ansible_hosts
 echo $ADDR > $ANSIBLE_HOSTS
 export ANSIBLE_HOSTS
 export ANSIBLE_HOST_KEY_CHECKING=False
+export ANSIBLE_SSH_ARGS="-o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
 if [ ! -z $TAGS ] ; then
   TAGS=" --tags ${TAGS}"
