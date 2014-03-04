@@ -41,6 +41,7 @@
       - libssl-dev
       - libxml2-dev
       - libxslt1-dev
+      - libsqlite3-dev
       - autoconf
       - libyaml-dev
       - libreadline6
