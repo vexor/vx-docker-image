@@ -5,7 +5,7 @@
     pg_version: 9.3
     mysql_version: 5.5
     phantomjs_version: 1.9.7
-    elasticsearch_version: 0.90.10
+    elasticsearch_version: 1.1.0
 
     services_onboot:
       - postgresql
@@ -15,10 +15,10 @@
       - /usr/sbin/mysqld &
 
     ruby_versions:
-      - 2.0.0-p353
-      - 1.9.3-p484
-      - 2.1.0
-      - jruby-1.7.9
+      - 2.0.0-p451
+      - 1.9.3-p545
+      - 2.1.1
+      - jruby-1.7.11
 
     java_packages:
       - openjdk-7-jdk
