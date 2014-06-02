@@ -3,7 +3,8 @@
 export RUNLEVEL=1
 export DEBIAN_FRONTEND=noninteractive
 
-echo "deb mirror://mirrors.ubuntu.com/mirrors.txt precise main restricted universe" > /etc/apt/sources.list
+echo "deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe" > /etc/apt/sources.list
+echo "deb http://archive.ubuntu.com/ubuntu/ precise-updates main restricted universe" >> /etc/apt/sources.list
 apt-get -qy update
 
 # add ssh
