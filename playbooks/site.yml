@@ -15,10 +15,10 @@
       - /usr/sbin/mysqld &
 
     ruby_versions:
-      - 2.0.0-p451
-      - 1.9.3-p545
-      - 2.1.1
-      - jruby-1.7.11
+      - jruby-1.7.12
+      - 2.0.0-p481
+      - 1.9.3-p547
+      - 2.1.2
 
     java_packages:
       - openjdk-7-jdk
