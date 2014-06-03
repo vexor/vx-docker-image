@@ -16,6 +16,9 @@ apt-get install -qy ansible
 
 ansible-playbook playbooks/site.yml -v -i playbooks/inventory -c local
 
+apt-get purge -qy ansible
+apt-get autoremove -qy
+
 #ENTRYPOINT ["/sbin/init", "--startup-event", "dockerboot"]
 
 
