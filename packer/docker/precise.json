@@ -19,8 +19,7 @@
         "type": "docker-import",
         "repository": "dmexe/vexor-precise",
         "tag": "latest"
-      },
-      "docker-push"
+      }
     ]
   ]
 }
