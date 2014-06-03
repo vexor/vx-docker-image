@@ -44,3 +44,4 @@ update-locale LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US"
 apt-get install -qy python
 
 #ENTRYPOINT ["/sbin/init", "--startup-event", "dockerboot"]
+
