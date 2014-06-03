@@ -10,7 +10,7 @@
   "provisioners": [
     {
       "type":   "shell",
-      "script": "script/base.sh"
+      "script": "docker/precise/base.sh"
     }
   ]
 }

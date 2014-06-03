@@ -5,7 +5,7 @@ set -x
 
 export RUNLEVEL=1
 export DEBIAN_FRONTEND=noninteractive
-
+export PYTHONUNBUFFERED=1
 
 cd /tmp/provision
 
@@ -14,7 +14,7 @@ apt-add-repository -y ppa:rquillo/ansible
 apt-get update
 apt-get install -qy ansible
 
-ansible-playbook playbooks/site.yml -vvvv -i playbooks/inventory -c local
+ansible-playbook playbooks/site.yml -v -i playbooks/inventory -c local
 
 #ENTRYPOINT ["/sbin/init", "--startup-event", "dockerboot"]
 

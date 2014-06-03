@@ -6,4 +6,4 @@ ADD playbooks /tmp/provision/playbooks
 RUN bash /tmp/provision/base.sh
 RUN rm -rf /tmp/provision
 
-ENTRYPOINT ["/sbin/init", "--startup-event", "dockerboot"]
+#ENTRYPOINT ["/sbin/init", "--startup-event", "dockerboot"]
