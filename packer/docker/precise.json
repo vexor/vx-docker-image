@@ -10,7 +10,16 @@
   "provisioners": [
     {
       "type":   "shell",
-      "script": "script/base.sh"
+      "script": "docker/precise/base.sh"
     }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-import",
+        "repository": "dmexe/vexor-precise",
+        "tag": "latest"
+      }
+    ]
   ]
 }
