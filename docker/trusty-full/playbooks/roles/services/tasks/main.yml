@@ -1,0 +1,6 @@
+- name: replace /usr/sbin/service script
+  template: src=service dest=/usr/sbin/service owner=root group=root mode=0755
+
+- name: symlink startup services
+  file: src=/etc/sv/{{ item }} dest=/etc/service/{{ item }} state=link
+  with_items: services_onboot

@@ -1,0 +1,4 @@
+elasticsearch_url: https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-{{elasticsearch_version}}.deb
+elasticsearch_root: /usr/share/elasticsearch
+elasticsearch_deb: /tmp/elasticsearch-{{elasticsearch_version}}.deb
+
