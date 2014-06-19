@@ -1,0 +1,2 @@
+sbt_root: /opt/sbt
+sbt_bin: /usr/local/bin/sbt

@@ -1,0 +1,44 @@
+- name: checkout rbenv repo
+  git: repo=git://github.com/sstephenson/rbenv.git dest={{rbenv_root}} version=v0.4.0
+  register: rbenv_repo_created
+
+- name: add rbenv to path
+  file: src={{rbenv_root}}/bin/rbenv dest={{rbenv_path}} state=link
+
+- name: create profile.d/rbenv.sh
+  template:  src=profile.j2 dest=/etc/profile.d/rbenv.sh mode="0644"
+
+- name: checkout ruby-build repo
+  git: repo=git://github.com/sstephenson/ruby-build.git dest={{ruby_build_root}}
+
+- name: create gemrc
+  copy: src=gemrc dest=/etc/gemrc
+
+- name: check installed ruby versions
+  stat: path={{rbenv_root}}/versions/{{item}}/bin
+  register: rbenv_installed_versions
+  with_items: ruby_versions
+
+- name: install ruby versions
+  shell: >
+    CONFIGURE_OPTS="--disable-install-doc" {{ruby_build_root}}/bin/ruby-build {{item.item}} {{rbenv_root}}/versions/{{item.item}} &&
+    env RBENV_ROOT={{rbenv_root}} rbenv rehash
+  with_items: rbenv_installed_versions.results
+  when: item.stat.exists == False
+
+- name: update gem
+  shell: >
+    env RBENV_ROOT={{rbenv_root}} RBENV_VERSION={{ item.item }} rbenv exec gem update --system &&
+    env RBENV_ROOT={{rbenv_root}} rbenv rehash
+  with_items: rbenv_installed_versions.results
+  when: item.stat.exists == False
+
+- name: install bundler
+  shell: >
+    env RBENV_ROOT={{rbenv_root}} RBENV_VERSION={{ item.item }} rbenv exec gem install bundler &&
+    env RBENV_ROOT={{rbenv_root}} rbenv rehash
+  with_items: rbenv_installed_versions.results
+  when: item.stat.exists == False
+
+- name: set global version
+  template: src=version.j2 dest={{rbenv_root}}/version

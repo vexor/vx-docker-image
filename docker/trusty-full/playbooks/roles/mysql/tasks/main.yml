@@ -1,0 +1,13 @@
+- name: install packages
+  apt: pkg={{item}} state=latest
+  environment:
+    RUNLEVEL: '1'
+  with_items:
+    - mysql-server-{{mysql_version}}
+    - libmysqlclient-dev
+
+- name: create service directory
+  file: path=/etc/sv/mysql-server state=directory
+
+- name: create run script
+  template: src=run dest=/etc/sv/mysql-server/run mode=0755

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+home={{ elasticsearch_root }}
+user=elasticsearch
+command="bin/elasticsearch -f"
+
+chdir $home
+exec setuser $user $command
+

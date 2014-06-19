@@ -1,0 +1,4 @@
+rbenv_root: /opt/rbenv
+ruby_build_root: /opt/ruby-build
+rbenv_path: /usr/local/bin/rbenv
+

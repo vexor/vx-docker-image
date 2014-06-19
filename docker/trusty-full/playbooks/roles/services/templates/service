@@ -1,0 +1,36 @@
+#!/bin/bash
+
+sv=/etc/sv
+srv=/etc/service
+
+if [ ! -d $sv/$1 ] ; then
+  echo "Unknown service $1"
+  exit 1
+fi
+
+case $2 in
+
+  start)
+    if [ ! -L $srv/$1 ] ; then
+      ln -s $sv/$1 $srv/$1
+      sleep 3
+    fi
+    sv status $1 || true
+    ;;
+
+  stop)
+    if [ -L $srv/$1 ] ; then
+      sv -v -w 10 stop $1 || true
+      rm $srv/$1
+    fi
+    ;;
+
+  status)
+    sv status $1 || true
+    ;;
+
+  *)
+    echo "Usage service SERVICE_NAME (start|stop|status)"
+    exit 1
+esac
+

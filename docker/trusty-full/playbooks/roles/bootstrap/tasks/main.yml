@@ -1,0 +1,6 @@
+- name: install packages
+  apt: pkg={{ item }} state=latest
+  with_items: installed_packages
+
+- name: create services directory
+  file: path=/etc/sv state=directory owner=root group=root mode=0755
