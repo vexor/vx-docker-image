@@ -21,5 +21,5 @@ apt-get purge -qy ansible python-apt
 apt-get autoremove -qy
 apt-get clean
 
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+rm -rf /tmp/* /var/tmp/*
 
