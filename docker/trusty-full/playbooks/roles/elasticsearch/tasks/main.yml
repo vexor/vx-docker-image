@@ -17,6 +17,9 @@
     touch {{elasticsearch_root}}/v{{elasticsearch_version}}
   when: elasticsearch_installed.stdout == 'no'
 
+- name: fixed permissions
+  file: path=/usr/share/elasticsearch recurse=yes owner=elasticsearch group=elasticsearch state=directory
+
 - name: create service directory
   file: path=/etc/sv/elasticsearch state=directory
 

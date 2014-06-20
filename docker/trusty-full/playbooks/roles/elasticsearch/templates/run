@@ -4,7 +4,7 @@ set -e
 
 home={{ elasticsearch_root }}
 user=elasticsearch
-command="bin/elasticsearch -f"
+command="bin/elasticsearch"
 
 chdir $home
 exec setuser $user $command
