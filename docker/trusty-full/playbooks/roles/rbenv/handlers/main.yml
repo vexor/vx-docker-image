@@ -1,3 +1,0 @@
-- name: rbenv rehash
-  shell: >
-    RBENV_ROOT={{rbenv_root}} rbenv rehash

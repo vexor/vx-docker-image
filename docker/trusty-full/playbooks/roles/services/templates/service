@@ -8,29 +8,80 @@ if [ ! -d $sv/$1 ] ; then
   exit 1
 fi
 
+service_exists () {
+  test -d $srv/$1 || test -L $srv/$1
+}
+
+service_must_be () {
+  service_exists $1 || (
+    echo "service $1 does not exists"
+    exit 1
+  )
+}
+
+sv_link () {
+  if [ ! -L $srv/$1 ] ; then
+    ln -s $sv/$1 $srv/$1
+  fi
+}
+
+sv_unlink () {
+  if [ -L $srv/$1 ] ; then
+    unlink $srv/$1
+  fi
+}
+
+sv_start () {
+  sv -v -w 10 start $1
+}
+
+sv_stop () {
+  sv -v -w 10 stop $1
+}
+
+sv_status () {
+  sv status $1
+}
+
+sv_restart () {
+  sv -v -w 10 t $1
+}
+
 case $2 in
 
+  link)
+    sv_link $1
+    ;;
+
+  unlink)
+    sv_unlink $1
+    ;;
+
   start)
-    if [ ! -L $srv/$1 ] ; then
-      ln -s $sv/$1 $srv/$1
-      sleep 3
-    fi
-    sv status $1 || true
+    service_exists $1 && (
+      sv_start $1
+    )
+    service_exists $1 || sv_link $1
     ;;
 
   stop)
-    if [ -L $srv/$1 ] ; then
-      sv -v -w 10 stop $1 || true
-      rm $srv/$1
-    fi
+    service_must_be $1 || exit 1
+    sv_stop $1
     ;;
 
   status)
-    sv status $1 || true
+    service_must_be $1 || exit 1
+    sv_status $1
+    ;;
+
+  restart)
+    service_must_be $1 || exit 1
+    sv_restart $1
     ;;
 
   *)
-    echo "Usage service SERVICE_NAME (start|stop|status)"
+    echo "Usage service SERVICE_NAME (start|stop|status|restart|link)"
     exit 1
+    ;;
 esac
 

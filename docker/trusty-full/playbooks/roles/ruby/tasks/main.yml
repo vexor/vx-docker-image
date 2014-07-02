@@ -1,0 +1,28 @@
+- name: checkout ruby-build repo
+  git: repo=git://github.com/sstephenson/ruby-build.git dest={{ruby_build_root}}
+
+- name: symlink ruby-build to PATH
+  file: >
+    src={{ ruby_build_root }}/bin/ruby-build
+    dest=/usr/local/bin/ruby-build
+    state=link
+
+- name: create gemrc
+  template: src=gemrc dest=/etc/gemrc
+
+- name: install default ruby version
+  shell: >
+    vxvm install ruby {{ ruby_default_version }}
+  register: ruby_default_result
+
+- name: create profile.d entry for default ruby
+  shell: >
+    cp {{ ruby_default_result.stdout }} /etc/profile.d/ruby.sh
+
+- name: capture default ruby location
+  shell: >
+    vxvm location ruby {{ ruby_default_version }}
+  register: ruby_default_location_result
+
+- name: create ruby wrapper for casher
+  template: src=casher-ruby dest=/usr/local/bin/casher-ruby mode=0755

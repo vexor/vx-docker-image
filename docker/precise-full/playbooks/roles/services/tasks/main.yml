@@ -1,2 +1,0 @@
-- name: create upstart job
-  template: src=docker-boot.upstart.conf dest=/etc/init/docker-boot.conf

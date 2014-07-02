@@ -1,7 +1,5 @@
-FROM dmexe/vexor-trusty:latest
+FROM dmexe/vexor-trusty:1.0.0
 MAINTAINER Dmitry Galinsky
-
-RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 ADD base.sh /tmp/provision/base.sh
 ADD playbooks /tmp/provision/playbooks

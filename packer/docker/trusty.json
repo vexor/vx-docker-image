@@ -1,0 +1,25 @@
+{
+  "builders": [
+    {
+      "type":        "docker",
+      "image":       "phusion/baseimage:0.9.11",
+      "pull":        true,
+      "export_path": "trusty.tar"
+    }
+  ],
+  "provisioners": [
+    {
+      "type":   "shell",
+      "script": "docker/trusty/base.sh"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-import",
+        "repository": "vexor/trusty",
+        "tag": "1.0.0"
+      }
+    ]
+  ]
+}

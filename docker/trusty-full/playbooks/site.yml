@@ -12,12 +12,9 @@
       - redis-server
       - mysql-server
 
-    ruby_versions:
-      - 1.9.3-p547
-      - jruby-1.7.12
-      - 2.0.0-p481
-      - 2.1.1
-      - 2.1.2
+    ruby_default_version: 1.9.3
+    nodejs_default_version: 0.10
+    java_default_version: java-1.7.0-openjdk-amd64
 
     java_packages:
       - openjdk-7-jdk
@@ -27,13 +24,12 @@
       - oracle-java7-installer
       - oracle-java8-installer
 
-    java_default_version: java-1.7.0-openjdk-amd64
-
     installed_packages:
-      - python-apt
-      - python-pycurl
       - git-core
+      - mercurial
+      - bzr
       - patch
+      - bison
       - curl
       - build-essential
       - libcurl4-openssl-dev
@@ -53,9 +49,9 @@
   roles:
     - bootstrap
 
-    - java
-    - rbenv
+    - ruby
     - nodejs
+    - java
     - sbt
     - lein
 
@@ -68,3 +64,4 @@
     - elasticsearch
 
     - services
+

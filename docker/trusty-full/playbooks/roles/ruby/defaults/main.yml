@@ -1,0 +1,2 @@
+ruby_build_root: /opt/ruby-build
+ruby_default_version: 1.9.3

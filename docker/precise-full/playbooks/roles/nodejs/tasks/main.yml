@@ -1,7 +1,0 @@
-- name: add apt repo
-  apt_repository: repo='ppa:chris-lea/node.js'
-
-- name: install packages
-  apt: pkg={{item}} state=latest update_cache=true
-  with_items:
-    - nodejs
