@@ -15,10 +15,6 @@
     vxvm install ruby {{ ruby_default_version }}
   register: ruby_default_result
 
-- name: create profile.d entry for default ruby
-  shell: >
-    cp {{ ruby_default_result.stdout }} /etc/profile.d/ruby.sh
-
 - name: capture default ruby location
   shell: >
     vxvm location ruby {{ ruby_default_version }}
@@ -26,3 +22,14 @@
 
 - name: create ruby wrapper for casher
   template: src=casher-ruby dest=/usr/local/bin/casher-ruby mode=0755
+
+- name: symlink default ruby to PATH
+  file: >
+    src={{ ruby_default_location_result.stdout }}/bin/{{ item }}
+    dest=/usr/local/bin/{{ item }}
+    state=link
+  with_items:
+    - "ruby"
+    - "rake"
+    - "gem"
+    - "irb"

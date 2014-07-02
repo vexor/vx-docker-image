@@ -3,6 +3,16 @@
     vxvm install nodejs {{ nodejs_default_version }}
   register: nodejs_default_result
 
-- name: create profile.d entry for default nodejs
+- name: capture default nodejs location
   shell: >
-    cp {{ nodejs_default_result.stdout }} /etc/profile.d/nodejs.sh
+    vxvm location nodejs {{ nodejs_default_version }}
+  register: nodejs_default_location_result
+
+- name: symlink default nodejs to PATH
+  file: >
+    src={{ nodejs_default_location_result.stdout }}/bin/{{ item }}
+    dest=/usr/local/bin/{{ item }}
+    state=link
+  with_items:
+    - "node"
+    - "npm"
