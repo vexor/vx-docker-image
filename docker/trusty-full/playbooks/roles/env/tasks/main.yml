@@ -1,0 +1,11 @@
+- name: download and install vxvm
+  get_url: >
+    url=https://raw.githubusercontent.com/vexor/vx-packages/master/vxvm
+    dest=/usr/local/bin/vxvm
+    mode=0755
+
+- name: create vx_retry script
+  template: src=retry.sh dest=/usr/local/bin/vx_retry mode=0755
+
+- name: symlink vx_retry to travis_retry (for compatibility)
+  file: src=/usr/local/bin/vx_retry dest=/usr/local/bin/travis_retry state=link

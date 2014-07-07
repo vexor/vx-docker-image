@@ -1,5 +1,0 @@
-- name: download and install vxvm
-  get_url: >
-    url=https://raw.githubusercontent.com/vexor/vx-packages/master/vxvm
-    dest=/usr/local/bin/vxvm
-    mode=0755

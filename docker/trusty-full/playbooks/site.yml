@@ -48,6 +48,7 @@
 
   roles:
     - bootstrap
+    - env
 
     - ruby
     - nodejs
@@ -59,6 +60,7 @@
 
     - postgresql
     - redis
+    - memcached
     - mysql
     - rabbitmq
     - elasticsearch
