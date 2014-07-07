@@ -1,0 +1,10 @@
+- name: install required packages
+  apt: pkg={{ item }}
+  with_items:
+    - memcached
+
+- name: create service directory
+  file: path=/etc/sv/memcached state=directory
+
+- name: create run script
+  template: src=run dest=/etc/sv/memcached/run mode=0755
