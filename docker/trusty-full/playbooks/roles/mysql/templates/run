@@ -10,4 +10,4 @@ MYSQLADMIN='/usr/bin/mysqladmin --defaults-extra-file=/etc/mysql/debian.cnf'
 trap "$MYSQLADMIN shutdown" 0
 trap 'exit 2' 1 2 3 15
 
-/usr/sbin/mysqld & wait
+/usr/sbin/mysqld --skip-grant-tables & wait

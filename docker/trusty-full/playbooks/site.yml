@@ -36,6 +36,7 @@
       - libssl-dev
       - libxml2-dev
       - libxslt1-dev
+      - sqlite3
       - libsqlite3-dev
       - autoconf
       - libyaml-dev
