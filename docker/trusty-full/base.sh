@@ -23,5 +23,5 @@ apt-get purge -qy ansible python-apt python-pycurl vim vim-runtime
 apt-get autoremove -qy
 apt-get clean
 
-rm -rf /tmp/* /var/tmp/*
+rm -rf /tmp/* /var/tmp/* /usr/share/man/* /usr/share/doc/*
 
