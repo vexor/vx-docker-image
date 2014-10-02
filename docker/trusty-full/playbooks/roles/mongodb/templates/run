@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+exec setuser mongodb /usr/bin/mongod --config /etc/mongodb.conf
