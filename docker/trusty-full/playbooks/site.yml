@@ -60,6 +60,7 @@
     - phantomjs
 
     - mongodb
+    - sphinxsearch
     - postgresql
     - redis
     - memcached
