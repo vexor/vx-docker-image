@@ -1,5 +1,8 @@
 - name: checkout ruby-build repo
-  git: repo=git://github.com/sstephenson/ruby-build.git dest={{ruby_build_root}}
+  git: >
+    repo=git://github.com/sstephenson/ruby-build.git
+    dest={{ruby_build_root}}
+    accept_hostkey=yes
 
 - name: symlink ruby-build to PATH
   file: >

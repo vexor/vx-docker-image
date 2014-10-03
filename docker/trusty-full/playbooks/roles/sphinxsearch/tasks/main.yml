@@ -4,6 +4,13 @@
     dest=/tmp/sphinxsearch_2.2.4-release-0ubuntu12~trusty_amd64.deb
   register: sphinxsearch_download_result
 
+- name: install rquired packages
+  apt: pkg={{ item }}
+  with_items:
+    - "libmysqlclient18"
+    - "libpq5"
+    - "libodbc1"
+
 - name: install package
   shell: >
     dpkg -i /tmp/sphinxsearch_2.2.4-release-0ubuntu12~trusty_amd64.deb

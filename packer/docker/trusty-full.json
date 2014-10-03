@@ -2,7 +2,7 @@
   "builders": [
     {
       "type":        "docker",
-      "image":       "vexor/trusty:1.0.0",
+      "image":       "vexor/trusty:1.0.1",
       "pull":        true,
       "export_path": "trusty-full.tar"
     }
@@ -23,7 +23,7 @@
       {
         "type": "docker-import",
         "repository": "vexor/trusty-full",
-        "tag": "1.0.2"
+        "tag": "1.0.3"
       }
     ]
   ]

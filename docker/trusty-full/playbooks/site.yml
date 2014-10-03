@@ -46,6 +46,8 @@
       - zlib1g-dev
       - imagemagick
       - libmagickwand-dev
+      - cmake
+      - libicu-dev
 
   roles:
     - bootstrap
@@ -59,14 +61,14 @@
 
     - phantomjs
 
-    - mongodb
-    - sphinxsearch
     - postgresql
     - redis
     - memcached
     - mysql
     - rabbitmq
     - elasticsearch
+    - mongodb
+    - sphinxsearch
 
     - services
 

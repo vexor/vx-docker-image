@@ -3,11 +3,11 @@
 set -e
 
 case $1 in
-  "precise")
-    packer build packer/precise.json
+  "trusty")
+    packer build packer/docker/trusty.json
     ;;
-  "precise-full")
-    packer build packer/precise-full.json
+  "trusty-full")
+    packer build packer/docker/trusty-full.json
     ;;
   *)
     echo "Usage $0 (precise|precise-full)"
