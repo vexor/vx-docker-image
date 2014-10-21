@@ -1,0 +1,6 @@
+- name: install required packages
+  apt: pkg={{ item }}
+  with_items:
+    - qt4-qmake
+    - libqt4-dev
+    - libqtwebkit-dev

@@ -1,4 +1,4 @@
-FROM dmexe/vexor-trusty:1.0.1
+FROM vexor/trusty:1.0.1
 MAINTAINER Dmitry Galinsky
 
 ADD base.sh /tmp/provision/base.sh

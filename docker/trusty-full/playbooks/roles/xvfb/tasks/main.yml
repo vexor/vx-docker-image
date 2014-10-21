@@ -1,0 +1,16 @@
+- name: install required packages
+  apt: pkg={{ item }}
+  with_items:
+    - xvfb
+    - dbus-x11
+    - fonts-ipafont-gothic
+    - xfonts-100dpi
+    - xfonts-75dpi
+    - xfonts-scalable
+    - xfonts-cyrillic
+
+- name: create service directory
+  file: path=/etc/sv/xvfb state=directory
+
+- name: create run script
+  template: src=run dest=/etc/sv/xvfb/run mode=0755

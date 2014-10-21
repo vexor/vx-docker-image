@@ -1,0 +1,7 @@
+- name: add firefox repo
+  apt_repository: repo="ppa:ubuntu-mozilla-daily/ppa"
+
+- name: install required packages
+  apt: pkg={{ item }}
+  with_items:
+    - firefox

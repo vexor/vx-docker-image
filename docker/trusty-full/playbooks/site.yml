@@ -53,6 +53,10 @@
     - bootstrap
     - env
 
+    - qt
+    - xvfb
+    - firefox
+
     - ruby
     - nodejs
     - java
