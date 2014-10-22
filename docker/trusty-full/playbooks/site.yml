@@ -11,6 +11,7 @@
       - postgresql
       - redis-server
       - mysql-server
+      - xvfb
 
     ruby_default_version: 1.9.3
     nodejs_default_version: 0.10
@@ -48,6 +49,8 @@
       - libmagickwand-dev
       - cmake
       - libicu-dev
+      - zip
+      - unzip
 
   roles:
     - bootstrap

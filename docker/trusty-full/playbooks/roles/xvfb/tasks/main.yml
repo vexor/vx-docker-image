@@ -2,7 +2,6 @@
   apt: pkg={{ item }}
   with_items:
     - xvfb
-    - dbus-x11
     - fonts-ipafont-gothic
     - xfonts-100dpi
     - xfonts-75dpi
