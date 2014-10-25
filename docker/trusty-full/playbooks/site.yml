@@ -13,7 +13,7 @@
       - mysql-server
       - xvfb
 
-    ruby_default_version: 1.9.3
+    ruby_default_version: 2.0.0
     nodejs_default_version: 0.10
     java_default_version: java-1.7.0-openjdk-amd64
 
