@@ -36,3 +36,4 @@
     - "rake"
     - "gem"
     - "irb"
+    - "bundle"
