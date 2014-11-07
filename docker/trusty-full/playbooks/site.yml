@@ -26,6 +26,7 @@
       - oracle-java8-installer
 
     installed_packages:
+      - tzdata
       - git-core
       - mercurial
       - bzr
