@@ -66,6 +66,3 @@ apt-get install -qy python
 rm -rf /etc/service/syslog-ng
 rm -rf /etc/service/cron
 
-apt-get purge -qy vim vim-runtime
-apt-get clean
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

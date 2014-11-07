@@ -20,8 +20,9 @@ apt-get install -qy ansible python-apt python-pycurl
 ansible-playbook playbooks/site.yml -v -i playbooks/inventory -c local
 
 apt-get purge -qy ansible python-apt python-pycurl vim vim-runtime
+
 apt-get autoremove -qy
 apt-get clean
 
-rm -rf /tmp/* /var/tmp/* /usr/share/man/* /usr/share/doc/*
-
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+rm -rf /usr/share/man/* /usr/share/doc/*

@@ -10,6 +10,6 @@ case $1 in
   *)
     cd docker/trusty
     echo docker build -t vexor/trusty:${VERSION} .
-    docker build -t vexor/trusty:${VERSION} .
+    docker build --rm --no-cache -t vexor/trusty:${VERSION} .
     ;;
 esac

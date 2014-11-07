@@ -4,6 +4,7 @@ MAINTAINER Dmitry Galinsky
 ADD 00_base.sh /tmp/provision/00_base.sh
 ADD 10_ci_env.sh /tmp/provision/10_ci_env.sh
 ADD playbooks /tmp/provision/playbooks
+
 RUN bash /tmp/provision/00_base.sh
 RUN bash /tmp/provision/10_ci_env.sh
 RUN rm -rf /tmp/provision
