@@ -1,16 +1,15 @@
-#!/bin/bash
+set -x
 
-set -e
+VERSION=$(cat version.txt)
 
 case $1 in
-  "trusty")
-    packer build packer/docker/trusty.json
-    ;;
-  "trusty-full")
-    packer build packer/docker/trusty-full.json
+  push)
+    echo docker push vexor/trusty:${VERSION}
+    docker push vexor/trusty:${VERSION}
     ;;
   *)
-    echo "Usage $0 (precise|precise-full)"
-    exit 1
+    cd docker/trusty
+    echo docker build -t vexor/trusty:${VERSION} .
+    docker build -t vexor/trusty:${VERSION} .
     ;;
 esac
