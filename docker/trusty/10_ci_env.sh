@@ -26,3 +26,5 @@ apt-get clean
 
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 rm -rf /usr/share/man/* /usr/share/doc/*
+
+apt-get update -qq

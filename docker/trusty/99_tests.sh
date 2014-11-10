@@ -6,6 +6,9 @@ set -e
 echo "Wait severs to be ready"
 sleep 10
 
+# should apt worked without update
+apt-get install pdftk -qy
+
 psql -c 'select version()' -U postgres
 mysql -u root -e "select version()"
 redis-cli time
@@ -33,8 +36,12 @@ searchd --status
 ruby --version
 gem --version
 bundle --version
+node --version
+npm --version
 
 javac -version
-sbt -h > /dev/null
 
-su -c 'lein -v' vexor
+sbt -h | grep Usage
+
+su -c 'lein -v' vexor | grep Leiningen
+
