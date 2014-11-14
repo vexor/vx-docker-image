@@ -52,6 +52,7 @@
       - libicu-dev
       - zip
       - unzip
+      - libmemcached-dev
 
   roles:
     - bootstrap

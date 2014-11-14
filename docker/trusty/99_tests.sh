@@ -18,7 +18,7 @@ sleep 5
 ( echo version | nc 127.0.0.1 11211 ) | grep 'VERSION'
 
 service elasticsearch start
-sleep 10
+sleep 15
 curl -s --fail -XGET 'http://localhost:9200/_nodes'
 
 service mongodb start
