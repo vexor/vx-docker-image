@@ -6,6 +6,19 @@
     - mysql-server-{{mysql_version}}
     - libmysqlclient-dev
 
+- name: tune my.cnf
+  shell: >
+    echo "
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/collation_server utf8_unicode_ci
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/character_set_server utf8
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/sync_frm 0
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/innodb-flush-log-at-trx-commit 0
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/innodb-doublewrite 0
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/innodb-checksums 0
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/innodb_support_xa 0
+      save
+    " | augtool
+
 - name: create service directory
   file: path=/etc/sv/mysql-server state=directory
 

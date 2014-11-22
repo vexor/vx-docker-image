@@ -14,6 +14,15 @@
     - postgresql-contrib-{{pg_version}}
     - libpq-dev
 
+- name: tune postgresql.cnf
+  shell: >
+    echo "
+      set /files/etc/postgresql/9.3/main/postgresql.conf/fsync off
+      set /files/etc/postgresql/9.3/main/postgresql.conf/full_page_writes off
+      set /files/etc/postgresql/9.3/main/postgresql.conf/synchronous_commit off
+      save
+    " | augtool
+
 - name: create pg_hba.conf
   template: src=pg_hba.conf dest=/etc/postgresql/{{pg_version}}/main/pg_hba.conf
 

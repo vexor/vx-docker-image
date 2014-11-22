@@ -53,6 +53,7 @@
       - zip
       - unzip
       - libmemcached-dev
+      - augeas-tools
 
   roles:
     - bootstrap
