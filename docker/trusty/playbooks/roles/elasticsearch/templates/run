@@ -4,8 +4,8 @@ set -e
 
 home={{ elasticsearch_root }}
 user=elasticsearch
-command="bin/elasticsearch"
+#
+command="bin/elasticsearch -D es.discovery.zen.ping.multicast.enabled=false -D es.discovery.zen.ping.unicast.hosts=0.0.0.0"
 
 chdir $home
 exec setuser $user $command
-
