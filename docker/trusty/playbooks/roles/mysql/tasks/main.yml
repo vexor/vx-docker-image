@@ -9,7 +9,7 @@
 - name: tune my.cnf
   shell: >
     echo "
-      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/collation_server utf8_unicode_ci
+      set /files/etc/mysql/my.cnf/target[. = 'mysqld']/collation_server utf8_general_ci
       set /files/etc/mysql/my.cnf/target[. = 'mysqld']/character_set_server utf8
       set /files/etc/mysql/my.cnf/target[. = 'mysqld']/sync_frm 0
       set /files/etc/mysql/my.cnf/target[. = 'mysqld']/innodb-flush-log-at-trx-commit 0
