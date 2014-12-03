@@ -62,6 +62,7 @@ case $2 in
       sv_start $1
     )
     service_exists $1 || sv_link $1
+    true
     ;;
 
   stop)
