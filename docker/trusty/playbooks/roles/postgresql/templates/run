@@ -6,4 +6,9 @@ POSTGRESQL_BIN=/usr/lib/postgresql/{{ pg_version }}/bin/postgres
 POSTGRESQL_CONFIG_FILE=/etc/postgresql/{{ pg_version }}/main/postgresql.conf
 POSTGRESQL_DATA=/var/lib/postgresql/{{ pg_version }}/main
 
+setuser postgres $POSTGRESQL_BIN --single -D $POSTGRESQL_DATA -c config_file=$POSTGRESQL_CONFIG_FILE <<-SQL
+  CREATE USER "vexor" WITH SUPERUSER ;
+  CREATE DATABASE "vexor" ;
+SQL
+
 exec setuser postgres $POSTGRESQL_BIN -D $POSTGRESQL_DATA -c config_file=$POSTGRESQL_CONFIG_FILE
