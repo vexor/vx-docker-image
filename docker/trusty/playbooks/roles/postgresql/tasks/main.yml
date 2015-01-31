@@ -14,6 +14,10 @@
     - postgresql-contrib-{{pg_version}}
     - libpq-dev
 
+- name: fix permissions
+  file: >
+    path=/var/run/postgresql/{{ pg_version }}-main.pg_stat_tmp state=directory owner=postgres group=postgres
+
 - name: tune postgresql.cnf
   shell: >
     echo "
