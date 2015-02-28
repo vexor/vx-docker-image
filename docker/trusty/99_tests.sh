@@ -36,6 +36,7 @@ sleep 5
 searchd --status
 
 ruby --version
+python --version
 gem --version
 bundle --version
 node --version
@@ -47,3 +48,5 @@ sbt -h | grep Usage
 
 su -c 'lein -v' vexor | grep Leiningen
 
+
+pip install ansible

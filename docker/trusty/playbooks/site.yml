@@ -64,6 +64,7 @@
     - firefox
 
     - ruby
+    - python
     - nodejs
     - java
     - sbt

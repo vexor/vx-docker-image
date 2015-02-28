@@ -1,0 +1,20 @@
+- name: install default python version
+  shell: >
+    vxvm install python {{ python_default_version }}
+  register: python_default_result
+
+- name: capture default python location
+  shell: >
+    vxvm location python {{ python_default_version }}
+  register: python_default_location_result
+
+- name: symlink default python to PATH
+  file: >
+    src={{ python_default_location_result.stdout }}/bin/{{ item }}
+    dest=/usr/local/bin/{{ item }}
+    state=link
+  with_items:
+    - "easy_install"
+    - "pip"
+    - "python"
+    - "python-config"
