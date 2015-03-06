@@ -26,6 +26,9 @@
 - name: create ruby wrapper for casher
   template: src=casher-ruby dest=/usr/local/bin/casher-ruby mode=0755
 
+- name: create profile.d entry for ruby
+  template: src=etc-profile-d-ruby dest=/etc/profile.d/default-ruby.sh
+
 - name: symlink default ruby to PATH
   file: >
     src={{ ruby_default_location_result.stdout }}/bin/{{ item }}
@@ -33,7 +36,3 @@
     state=link
   with_items:
     - "ruby"
-    - "rake"
-    - "gem"
-    - "irb"
-    - "bundle"

@@ -5,6 +5,9 @@ set -e
 cd /
 umask 077
 
+mkdir -p /var/lib/mysql
+chown mysql:mysql /var/lib/mysql
+
 MYSQLADMIN='/usr/bin/mysqladmin --defaults-extra-file=/etc/mysql/debian.cnf'
 
 trap "$MYSQLADMIN shutdown" 0

@@ -8,13 +8,8 @@
     vxvm location python {{ python_default_version }}
   register: python_default_location_result
 
-- name: symlink default python to PATH
-  file: >
-    src={{ python_default_location_result.stdout }}/bin/{{ item }}
-    dest=/usr/local/bin/{{ item }}
-    state=link
-  with_items:
-    - "easy_install"
-    - "pip"
-    - "python"
-    - "python-config"
+- name: create profile.d entry for python
+  template: src=etc-profile-d-python dest=/etc/profile.d/default-python.sh
+
+- name: install ansible package
+  pip: name=ansible executable={{ python_default_location_result.stdout }}/bin/pip

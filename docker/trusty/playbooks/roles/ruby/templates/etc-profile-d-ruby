@@ -1,0 +1,1 @@
+PATH={{ ruby_default_location_result.stdout }}/bin:$PATH

@@ -37,10 +37,12 @@ searchd --status
 
 ruby --version
 python --version
+pip --version
 gem --version
 bundle --version
 node --version
 npm --version
+ansible-playbook --version
 
 javac -version
 
@@ -48,5 +50,3 @@ sbt -h | grep Usage
 
 su -c 'lein -v' vexor | grep Leiningen
 
-
-pip install ansible

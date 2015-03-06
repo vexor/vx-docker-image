@@ -14,5 +14,5 @@
     dest=/usr/local/bin/{{ item }}
     state=link
   with_items:
-    - "node"
-    - "npm"
+  - "node"
+  - "npm"

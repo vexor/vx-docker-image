@@ -11,6 +11,6 @@ case $1 in
     cd docker/trusty
     echo docker build -t quay.io/dmexe/trusty:${VERSION} .
     docker build --rm --no-cache -t quay.io/dmexe/trusty:${VERSION} .
-    docker run -it quay.io/dmexe/trusty:${VERSION} /sbin/my_init -- /bin/bash /var/vexor/tests.sh
+    docker run -it --rm quay.io/dmexe/trusty:${VERSION} /sbin/my_init -- /bin/bash -l /var/vexor/tests.sh
     ;;
 esac
