@@ -1,1 +1,1 @@
-PATH={{ python_default_location_result.stdout }}/bin:$PATH
+export PATH={{ python_default_location_result.stdout }}/bin:$PATH
