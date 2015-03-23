@@ -11,10 +11,10 @@ apt-get install pdftk -qy
 
 psql -c 'select version()' -U postgres
 
-su vexor -c "psql -c 'select version()'"
-su vexor -c "psql -c 'CREATE EXTENSION postgis'"
-su vexor -c "psql -c 'CREATE EXTENSION postgis_topology'"
-su vexor -c "psql -c 'SELECT PostGIS_full_version()'"
+su vexor -c "psql -c -P pager=off 'select version()'"
+su vexor -c "psql -c -P pager=off 'CREATE EXTENSION postgis'"
+su vexor -c "psql -c -P pager=off 'CREATE EXTENSION postgis_topology'"
+su vexor -c "psql -c -P pager=off 'SELECT PostGIS_full_version()'"
 
 mysql -u root -e "select version()"
 redis-cli time
@@ -28,7 +28,7 @@ sleep 15
 curl -s --fail -XGET 'http://localhost:9200/_nodes'
 
 service mongodb start
-sleep 5
+sleep 10
 echo "db.version()" | mongo
 
 service rabbitmq-server start
