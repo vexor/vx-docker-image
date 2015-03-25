@@ -4,11 +4,8 @@
 - name: install required packages
   apt: pkg={{ item }}
   with_items:
-    - mesa-common-dev
-    - libgl1-mesa-dev
-    - qt54declarative
-    - qt54webkit-examples
+  - qt54declarative
+  - qt54webkit-examples
 
 - name: add qt to global env
-  shell: >
-    ln -s /opt/qt54/bin/qt54-env.sh /etc/profile.d/qt54-env.sh
+  file: src=/opt/qt54/bin/qt54-env.sh dest=/etc/profile.d/qt54-env.sh state=link
