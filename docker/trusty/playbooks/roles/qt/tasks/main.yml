@@ -1,6 +1,14 @@
+- name: Add PPA for QT
+  apt_repository: repo='ppa:beineri/opt-qt541-trusty'
+
 - name: install required packages
   apt: pkg={{ item }}
   with_items:
-    - qt4-qmake
-    - libqt4-dev
-    - libqtwebkit-dev
+    - mesa-common-dev
+    - libgl1-mesa-dev
+    - qt54declarative
+    - qt54webkit-examples
+
+- name: add qt to global env
+  shell: >
+    ln -s /opt/qt54/bin/qt54-env.sh /etc/profile.d/qt54-env.sh

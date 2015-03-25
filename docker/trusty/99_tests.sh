@@ -48,6 +48,8 @@ node --version
 npm --version
 ansible-playbook --version
 
+qmake --version | grep '5.4.1'
+
 javac -version
 
 sbt -h | grep Usage
