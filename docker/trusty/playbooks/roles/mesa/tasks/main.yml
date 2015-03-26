@@ -1,0 +1,5 @@
+- name: install required packages
+  apt: pkg={{item}}
+  with_items:
+  - mesa-common-dev
+  - libgl1-mesa-dev
