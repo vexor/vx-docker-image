@@ -9,12 +9,14 @@ sleep 10
 # should apt worked without update
 apt-get install pdftk -qy
 
-psql -c 'select version()' -U postgres
+psql="psql --pset pager=off"
 
-su vexor -c "psql -c -P pager=off 'select version()'"
-su vexor -c "psql -c -P pager=off 'CREATE EXTENSION postgis'"
-su vexor -c "psql -c -P pager=off 'CREATE EXTENSION postgis_topology'"
-su vexor -c "psql -c -P pager=off 'SELECT PostGIS_full_version()'"
+$psql -c 'select version()' -U postgres
+
+su vexor -c "$psql -c 'select version()'"
+su vexor -c "$psql -c 'CREATE EXTENSION postgis'"
+su vexor -c "$psql -c 'CREATE EXTENSION postgis_topology'"
+su vexor -c "$psql -c 'SELECT PostGIS_full_version()'"
 
 mysql -u root -e "select version()"
 redis-cli time
