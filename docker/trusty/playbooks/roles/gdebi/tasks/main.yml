@@ -1,0 +1,6 @@
+# gdebi lets you install local deb packages resolving and installing its
+# dependencies. apt does the same, but only for remote (http, ftp) located
+# packages.
+
+- name: install package
+  apt: pkg=gdebi-core

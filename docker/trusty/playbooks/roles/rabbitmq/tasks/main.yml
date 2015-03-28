@@ -1,6 +1,6 @@
 - name: fetch rabbitmq package
   get_url: >
-    url=https://www.rabbitmq.com/releases/rabbitmq-server/v3.5.0/rabbitmq-server_3.5.0-1_all.deb
+    url=http://mirror.yandex.ru/mirrors/rabbitmq/pool/main/r/rabbitmq-server/rabbitmq-server_3.5.0-1_all.deb
     dest=/tmp/rabbitmq-server_3.5.0-1_all.deb
 
 - name: install package

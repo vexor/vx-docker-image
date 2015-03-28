@@ -50,7 +50,7 @@ node --version
 npm --version
 ansible-playbook --version
 
-qmake --version | grep '5.4.1'
+qmake --version | grep '4.8.6'
 
 javac -version
 

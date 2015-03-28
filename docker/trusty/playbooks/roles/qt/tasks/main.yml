@@ -1,11 +1,13 @@
-- name: Add PPA for QT
-  apt_repository: repo='ppa:beineri/opt-qt541-trusty'
-
-- name: install required packages
-  apt: pkg={{ item }}
+- name: download packages
+  get_url: >
+    url=https://s3-eu-west-1.amazonaws.com/assets-eu0-vexor-io/files.vexor.io/{{ item }}
+    dest=/tmp/{{ item }}
   with_items:
-  - qt54declarative
-  - qt54webkit-examples
+  - libqtwebkit4_2.3.2-0ubuntu7_amd64.deb
+  - libqtwebkit-dev_2.3.2-0ubuntu7_amd64.deb
 
-- name: add qt to global env
-  file: src=/opt/qt54/bin/qt54-env.sh dest=/etc/profile.d/qt54-env.sh state=link
+- name: install packages
+  shell: gdebi /tmp/{{ item }} -n
+  with_items:
+  - libqtwebkit4_2.3.2-0ubuntu7_amd64.deb
+  - libqtwebkit-dev_2.3.2-0ubuntu7_amd64.deb
