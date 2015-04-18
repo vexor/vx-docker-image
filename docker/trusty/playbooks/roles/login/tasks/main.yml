@@ -1,0 +1,2 @@
+- name: create /sbin/my_login
+  template: src=my_login dest=/sbin/my_login mode=0755

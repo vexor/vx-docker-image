@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+cd /home/vexor
+
+if [ -f /home/vexor/.my_login ] ; then
+  . /home/vexor/.my_login
+fi
+
+exec setuser vexor /bin/bash -l
+

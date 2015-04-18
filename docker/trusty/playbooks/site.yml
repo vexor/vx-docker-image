@@ -58,6 +58,7 @@
   roles:
     - bootstrap
     - env
+    - login
 
     - qt
     - xvfb
