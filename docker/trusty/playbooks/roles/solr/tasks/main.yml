@@ -1,0 +1,22 @@
+- name: check installed
+  shell: >
+    test -f {{solr_root}}/bin/solr && echo -n 'yes' || echo -n 'no'
+  register: solr_installed
+
+- name: download archive
+  get_url: dest={{solr_tar}} url={{solr_url}}
+  when: solr_installed.stdout == 'no'
+
+- name: unpack archive
+  shell: >
+    tar -C /opt -zxf {{ solr_tar }}
+  when: solr_installed.stdout == 'no'
+
+- name: symlink solr to path
+  file: src=/opt/solr-{{ solr_version }}/bin/solr dest=/usr/local/bin/solr state=link
+
+- name: create service directory
+  file: path=/etc/sv/solr state=directory
+
+- name: create run script
+  template: src=run dest=/etc/sv/solr/run mode=0755

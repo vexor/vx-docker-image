@@ -6,6 +6,7 @@
     mysql_version: 5.6
     phantomjs_version: 1.9.7
     elasticsearch_version: 1.2.1
+    solr_version: 5.1.0
 
     services_onboot:
       - postgresql
@@ -78,6 +79,7 @@
     - memcached
     - mysql
     - rabbitmq
+    - solr
     - elasticsearch
     - mongodb
     - sphinxsearch

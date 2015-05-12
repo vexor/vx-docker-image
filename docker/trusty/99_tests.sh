@@ -25,6 +25,10 @@ service memcached start
 sleep 5
 ( echo version | nc 127.0.0.1 11211 ) | grep 'VERSION'
 
+service solr start
+sleep 15
+curl -s --fail -XGET 'http://localhost:8983/solr/admin/cores'
+
 service elasticsearch start
 sleep 15
 curl -s --fail -XGET 'http://localhost:9200/_nodes'

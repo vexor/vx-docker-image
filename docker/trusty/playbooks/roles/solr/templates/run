@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+home={{ solr_root }}
+user=root
+#
+command="bin/solr start -f -noprompt"
+
+chdir $home
+exec setuser $user $command
