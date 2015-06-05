@@ -1,10 +1,10 @@
 - name: fetch rabbitmq package
   get_url: >
-    url=http://mirror.yandex.ru/mirrors/rabbitmq/pool/main/r/rabbitmq-server/rabbitmq-server_3.5.1-1_all.deb
-    dest=/tmp/rabbitmq-server_3.5.1-1_all.deb
+    url=http://mirror.yandex.ru/mirrors/rabbitmq/pool/main/r/rabbitmq-server/rabbitmq-server_3.5.3-1_all.deb
+    dest=/tmp/rabbitmq-server_3.5.3-1_all.deb
 
 - name: install package
-  shell: dpkg -i /tmp/rabbitmq-server_3.5.1-1_all.deb
+  shell: dpkg -i /tmp/rabbitmq-server_3.5.3-1_all.deb
 
 - name: create service directory
   file: path=/etc/sv/rabbitmq-server state=directory
