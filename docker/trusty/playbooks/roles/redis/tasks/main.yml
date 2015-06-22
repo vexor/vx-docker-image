@@ -1,8 +1,8 @@
+- name: add redis ppa
+  apt_repository: repo='ppa:chris-lea/redis-server'
+
 - name: install packages
-  apt: pkg={{item}}
-  with_items:
-  - redis-server
-  - redis-tools
+  apt: pkg=redis-server
 
 - name: create service directory
   file: path=/etc/sv/redis-server state=directory

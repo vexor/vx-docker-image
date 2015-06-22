@@ -22,9 +22,9 @@
 - name: tune postgresql.cnf
   shell: >
     echo "
-      set /files/etc/postgresql/9.3/main/postgresql.conf/fsync off
-      set /files/etc/postgresql/9.3/main/postgresql.conf/full_page_writes off
-      set /files/etc/postgresql/9.3/main/postgresql.conf/synchronous_commit off
+      set /files/etc/postgresql/{{ pg_version }}/main/postgresql.conf/fsync off
+      set /files/etc/postgresql/{{ pg_version }}/main/postgresql.conf/full_page_writes off
+      set /files/etc/postgresql/{{ pg_version }}/main/postgresql.conf/synchronous_commit off
       save
     " | augtool
 
