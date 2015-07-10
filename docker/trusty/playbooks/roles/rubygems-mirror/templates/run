@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -e
 set -x
 
 if [ -n "$VEXOR_RUBYGEMS_MIRROR" ]; then
