@@ -1,0 +1,2 @@
+- name: create run script
+  template: src=run desc=/etc/sv/rubygems-mirror/run mode 0755
