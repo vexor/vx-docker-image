@@ -1,2 +1,0 @@
-- name: create run script
-  template: src=run desc=/etc/sv/rubygems/run mode 0755
