@@ -1,11 +1,10 @@
 #!/bin/sh
 
-set -e
+set -x
 
 if [ -n "$VEXOR_RUBYGEMS_MIRROR" ]; then
     mkdir -p "/home/vexor/.bundle"
     echo "---\nBUNDLE_MIRROR__HTTPS://RUBYGEMS.ORG: $VEXOR_RUBYGEMS_MIRROR" >> /home/vexor/.bundle/config
-    echo "Updated bundler config"
 fi
 
-exec sv down rubygems-mirror
+sv down rubygems-mirror
