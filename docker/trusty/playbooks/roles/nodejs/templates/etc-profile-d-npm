@@ -1,0 +1,1 @@
+export PATH={{ npm_packages_dir }}/bin:$PATH

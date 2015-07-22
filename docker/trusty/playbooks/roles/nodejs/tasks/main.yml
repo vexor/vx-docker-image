@@ -16,3 +16,16 @@
   with_items:
   - "node"
   - "npm"
+
+- name: make npm user global dir
+  file: path={{ npm_packages_dir }} state=directory
+
+- name: set npm packages dir
+  shell: >
+    npm config set prefix {{ npm_packages_dir }}
+
+- name: create profiles.d entry for npm
+  template: src=etc-profile-d-npm dest=/etc/profile.d/default-npm-path.sh
+
+- name: install bower
+  npm: name=bower global=true path={{ npm_packages_dir }}
