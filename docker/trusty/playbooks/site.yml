@@ -18,7 +18,7 @@
     nodejs_default_version: 0.10
     npm_packages_dir: /home/vexor/.npm-global
     java_default_version: java-1.7.0-openjdk-amd64
-    mvn_version: 3.3.3
+    maven_version: 3.3.3
 
     java_packages:
       - openjdk-7-jdk
@@ -73,7 +73,7 @@
     - java
     - sbt
     - lein
-    - mvn
+    - maven
 
     - phantomjs
 

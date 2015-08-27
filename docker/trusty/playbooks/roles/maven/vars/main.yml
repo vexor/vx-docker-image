@@ -1,0 +1,3 @@
+maven_root: /opt/apache-maven-{{maven_version}}
+maven_url: http://apache-mirror.rbc.ru/pub/apache/maven/maven-3/{{ maven_version }}/binaries/apache-maven-{{ maven_version }}-bin.tar.gz
+maven_archive: /tmp/mvn-{{maven_version}}.tar.gz
