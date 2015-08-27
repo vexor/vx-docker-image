@@ -53,12 +53,9 @@ bundle --version
 node --version
 npm --version
 ansible-playbook --version
-
+mvn --version
 qmake --version | grep '4.8.6'
-
 javac -version
-
 sbt -h | grep Usage
-
 su -c 'lein -v' vexor | grep Leiningen
 
