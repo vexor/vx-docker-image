@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+home={{ zookeeper_root }}
+user=root
+command="bin/zkServer.sh start-foreground"
+
+chdir $home
+exec setuser $user $command
+

@@ -58,4 +58,5 @@ qmake --version | grep '4.8.6'
 javac -version
 sbt -h | grep Usage
 su -c 'lein -v' vexor | grep Leiningen
+/usr/local/bin/zookeeper/bin/zkServer.sh status
 

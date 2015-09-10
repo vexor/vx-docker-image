@@ -1,0 +1,3 @@
+zookeeper_url: http://apache-mirror.rbc.ru/pub/apache/zookeeper/zookeeper-{{ zookeeper_version }}/zookeeper-{{ zookeeper_version }}.tar.gz
+zookeeper_root: /usr/local/zookeeper-{{ zookeeper_version }}
+zookeeper_tar:  /tmp/zookeper-{{ zookeeper_version }}.tar.gz

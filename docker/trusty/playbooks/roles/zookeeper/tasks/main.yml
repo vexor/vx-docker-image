@@ -1,0 +1,27 @@
+- name: check installed
+  shell: >
+    test -f {{zookeeper_root}}/v{{zookeeper_version}} && echo -n 'yes' || echo -n 'no'
+  register: zookeeper_installed
+
+- name: download archive
+  get_url: dest={{zookeeper_tar}} url={{zookeeper_url}}
+  when: zookeeper_installed.stdout == 'no'
+
+- name: unpack tar
+  unarchive: src={{ zookeeper_tar }} dest=/usr/local
+  when: zookeeper_installed.stdout == 'no'
+
+- name: link directory
+  file: src={{ zookeeper_root }} dest=/usr/local/zookeeper state=link
+
+- name: create service directory
+  file: path=/etc/sv/zookeeper state=directory
+
+- name: create run script
+  template: src=run dest=/etc/sv/zookeeper/run mode=0755
+
+- name: touch version
+  shell:
+    touch {{zookeeper_root}}/v{{zookeeper_version}}
+  when: zookeeper_installed.stdout == 'no'
+
