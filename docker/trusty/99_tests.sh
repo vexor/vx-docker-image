@@ -45,6 +45,10 @@ searchd &
 sleep 5
 searchd --status
 
+service zookeeper start
+sleep 5
+/usr/local/zookeeper/bin/zkServer.sh status
+
 ruby --version
 python --version
 pip --version
@@ -58,5 +62,4 @@ qmake --version | grep '4.8.6'
 javac -version
 sbt -h | grep Usage
 su -c 'lein -v' vexor | grep Leiningen
-/usr/local/bin/zookeeper/bin/zkServer.sh status
 

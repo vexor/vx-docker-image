@@ -14,6 +14,11 @@
 - name: link directory
   file: src={{ zookeeper_root }} dest=/usr/local/zookeeper state=link
 
+- name: copy config
+  shell: >
+    cp {{ zookeeper_root }}/conf/zoo_sample.cfg {{ zookeeper_root }}/conf/zoo.cfg
+    creates={{ zookeeper_root }}/conf/zoo.cfg
+
 - name: create service directory
   file: path=/etc/sv/zookeeper state=directory
 
