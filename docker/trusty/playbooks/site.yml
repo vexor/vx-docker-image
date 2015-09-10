@@ -2,22 +2,22 @@
 - hosts: all
 
   vars:
-    pg_version: 9.4
-    mysql_version: 5.6
-    phantomjs_version: 1.9.8
-    elasticsearch_version: 1.5.2
-    solr_version: 5.2.1
+    pg_version:             9.4
+    mysql_version:          5.6
+    phantomjs_version:      1.9.8
+    elasticsearch_version:  1.5.2
+    solr_version:           5.2.1
+    ruby_default_version:   2.0.0
+    nodejs_default_version: 0.10
+    java_default_version:   java-1.7.0-openjdk-amd64
+    maven_version:          3.3.3
+    zookeeper_version:      3.4.6
 
     services_onboot:
       - postgresql
       - redis-server
       - mysql-server
       - xvfb
-
-    ruby_default_version: 2.0.0
-    nodejs_default_version: 0.10
-    npm_packages_dir: /home/vexor/.npm-global
-    java_default_version: java-1.7.0-openjdk-amd64
 
     java_packages:
       - openjdk-7-jdk
@@ -72,9 +72,11 @@
     - java
     - sbt
     - lein
+    - maven
 
     - phantomjs
 
+    - zookeeper
     - postgresql
     - redis
     - memcached

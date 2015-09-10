@@ -1,0 +1,20 @@
+- name: check installed
+  shell: test -d {{maven_root}} && echo -n 'yes' || echo -n 'no'
+  changed_when: False
+  tags: maven
+  register: maven_installed
+
+- name: install required packages
+  apt: pkg={{item}}
+  tags: maven
+  with_items:
+    - gzip
+
+- name: download and unpack archive
+  shell: "curl -L {{maven_url}} | tar -zxf - chdir=/opt"
+  tags: maven
+  when: maven_installed.stdout == 'no'
+
+- name: add to path
+  tags: maven
+  file: src={{maven_root}}/bin/mvn dest=/usr/local/bin/mvn state=link
