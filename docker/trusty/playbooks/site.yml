@@ -75,6 +75,7 @@
     - maven
 
     - phantomjs
+    - wkhtmltox
 
     - zookeeper
     - postgresql
