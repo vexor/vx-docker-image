@@ -1,0 +1,3 @@
+elasticsearch2_url: https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/{{elasticsearch2_version}}/elasticsearch-{{elasticsearch2_version}}.tar.gz
+elasticsearch2_root: /usr/share/elasticsearch2
+elasticsearch2_tar: /tmp/elasticsearch-{{elasticsearch2_version}}.tar.gz

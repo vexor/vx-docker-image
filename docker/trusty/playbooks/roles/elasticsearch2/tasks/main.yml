@@ -1,0 +1,32 @@
+- name: check installed
+  shell: >
+    test -f {{elasticsearch2_root}}/elasticsearch-{{elasticsearch2_version}}/bin/elasticsearch && echo -n 'yes' || echo -n 'no'
+  register: elasticsearch2_installed
+
+- name: download tar
+  get_url: dest={{elasticsearch2_tar}} url={{elasticsearch2_url}}
+  when: elasticsearch2_installed.stdout == 'no'
+
+- name: remove existing elasticsearch2
+  shell: >
+    rm -rf {{elasticsearch2_root}}
+  when: elasticsearch2_installed.stdout == 'no'
+
+- name: recreate destanation directory
+  shell: >
+    mkdir -p {{elasticsearch2_root}}
+  when: elasticsearch2_installed.stdout == 'no'
+
+- name: extract current version
+  shell: >
+    tar -C {{elasticsearch2_root}} -zxf {{elasticsearch2_tar}}
+  when: elasticsearch2_installed.stdout == 'no'
+
+- name: fixed permissions
+  file: path={{elasticsearch2_root}} recurse=yes owner=elasticsearch group=elasticsearch state=directory
+
+- name: create service directory
+  file: path=/etc/sv/elasticsearch2 state=directory
+
+- name: create run script
+  template: src=run dest=/etc/sv/elasticsearch2/run mode=0755

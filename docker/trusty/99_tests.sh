@@ -33,6 +33,11 @@ service elasticsearch start
 sleep 15
 curl -s --fail -XGET 'http://localhost:9200/_nodes'
 
+service elasticsearch stop
+service elasticsearch2 start
+sleep 15
+curl -s --fail -XGET 'http://localhost:9200/_nodes'
+
 service mongodb start
 sleep 10
 echo "db.version()" | mongo
@@ -62,4 +67,3 @@ qmake --version | grep '4.8.6'
 javac -version
 sbt -h | grep Usage
 su -c 'lein -v' vexor | grep Leiningen
-
