@@ -1,7 +1,49 @@
-- name: add firefox repo
-  apt_repository: repo="ppa:ubuntu-mozilla-daily/ppa"
+# - name: add firefox repo
+#   apt_repository: repo="ppa:ubuntu-mozilla-daily/ppa"
+#
+# - name: install required packages
+#   apt: pkg={{ item }}
+#   with_items:
+#     - firefox={{ firefox_version }}
+- name: firefox installed
+  shell: test -f {{ firedox_dst_path }}/firefox && echo -n 'yes' || echo -n 'no'
+  changed_when: False
+  tags: firefox
+  register: firefox_installed
 
-- name: install required packages
-  apt: pkg={{ item }}
+- name: install default python version
+  shell: >
+    vxvm install python {{ python_default_version }}
+  register: python_default_result
+
+- name: capture default python location
+  shell: >
+    vxvm location python {{ python_default_version }}
+  register: python_default_location_result
+
+- name: install mozinstall dependencies
+  pip: name={{ item }} executable={{ python_default_location_result.stdout }}/bin/pip
   with_items:
-    - firefox
+    - mozdownload
+    - mozinstall
+  tags: firefox
+  when: firefox_installed.stdout == 'no'
+
+- name: download firefox
+  shell: "{{ python_default_location_result.stdout }}/bin/mozdownload --application=firefox --platform=linux64 --log-level=WARN --version={{ firefox_version }}"
+  tags: firefox
+  when: firefox_installed.stdout == 'no'
+
+- name: install firefox to destanation
+  shell: "{{ python_default_location_result.stdout }}/bin/mozinstall --app=firefox firefox-{{ firefox_version }}.en-US.linux64.tar.bz2 --destination=/usr/local/"
+  tags: firefox
+  when: firefox_installed.stdout == 'no'
+
+- name: create firefox symlink
+  file: src={{ firefox_src_path }}/firefox dest={{ firedox_dst_path }}/firefox state=link
+  tags: firefox
+  when: firefox_installed.stdout == 'no'
+
+- name: remove temp archive
+  shell: rm firefox-*.tar.bz2
+  tags: firefox
