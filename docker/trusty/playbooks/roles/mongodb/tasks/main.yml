@@ -1,14 +1,14 @@
 - name: add mongo ppa key
   apt_key: >
     keyserver=hkp://keyserver.ubuntu.com:80
-    id=7F0CEB10
+    id=EA312927
     state=present
 
 - name: add mongo sources list
-  apt_repository: repo='deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen'
+  apt_repository: repo='deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.2 multiverse'
 
 - name: install mongo
-  apt: name=mongodb-10gen state=latest update_cache=yes
+  apt: name=mongodb-org state=latest update_cache=yes
 
 - name: create service directory
   file: path=/etc/sv/mongodb state=directory

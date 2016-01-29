@@ -1,7 +1,7 @@
 - name: download deb package
   get_url: >
-    url=http://sphinxsearch.com/files/sphinxsearch_2.2.7-release-0ubuntu12~trusty_amd64.deb
-    dest=/tmp/sphinxsearch_2.2.7-release-0ubuntu12~trusty_amd64.deb
+    url=http://sphinxsearch.com/files/sphinxsearch_{{ sphinxsearch_version }}-release-0ubuntu12~trusty_amd64.deb
+    dest=/tmp/sphinxsearch_{{ sphinxsearch_version }}-release-0ubuntu12~trusty_amd64.deb
   register: sphinxsearch_download_result
 
 - name: install rquired packages
@@ -13,5 +13,5 @@
 
 - name: install package
   shell: >
-    dpkg -i /tmp/sphinxsearch_2.2.7-release-0ubuntu12~trusty_amd64.deb
+    dpkg -i /tmp/sphinxsearch_{{ sphinxsearch_version }}-release-0ubuntu12~trusty_amd64.deb
   when: sphinxsearch_download_result | changed
