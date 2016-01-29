@@ -2,9 +2,9 @@
 - hosts: all
 
   vars:
-    pg_version:             9.4
+    pg_version:             9.5
     mysql_version:          5.6
-    phantomjs_version:      1.9.8
+    phantomjs_version:      2.1.1
     elasticsearch_version:  1.5.2
     elasticsearch2_version: 2.1.1
     solr_version:           5.2.1
@@ -13,8 +13,9 @@
     java_default_version:   java-1.7.0-openjdk-amd64
     maven_version:          3.3.3
     rabbitmq_version:       3.6.0-1
-    zookeeper_version:      3.4.7
+    zookeeper_version:      3.4.6
     firefox_version:        40.0.3
+    sphinxsearch_version:   2.2.10
 
     services_onboot:
       - postgresql
