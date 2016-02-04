@@ -2,7 +2,7 @@
 - hosts: all
 
   vars:
-    pg_version:             9.5
+    pg_version:             9.4
     mysql_version:          5.6
     phantomjs_version:      2.1.1
     elasticsearch_version:  1.5.2
