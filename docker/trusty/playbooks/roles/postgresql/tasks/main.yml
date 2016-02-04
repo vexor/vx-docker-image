@@ -12,7 +12,7 @@
     - postgresql-{{pg_version}}
     - postgresql-client-{{pg_version}}
     - postgresql-contrib-{{pg_version}}
-    - postgresql-{{pg_version}}-postgis-2.2
+    - postgresql-{{pg_version}}-postgis-2.1
     - libpq-dev
 
 - name: fix permissions
