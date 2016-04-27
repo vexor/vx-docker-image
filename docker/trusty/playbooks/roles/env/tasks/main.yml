@@ -3,6 +3,7 @@
     url=https://raw.githubusercontent.com/vexor/vx-citool/master/lib/vx/citool/scripts/vxvm
     dest=/usr/local/bin/vxvm
     mode=0755
+    validate_certs=no
 
 - name: create vx_retry script
   template: src=retry.sh dest=/usr/local/bin/vx_retry mode=0755

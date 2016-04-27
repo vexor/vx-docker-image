@@ -60,9 +60,8 @@ dpkg-reconfigure -fnoninteractive locales
 update-locale LC_ALL="en_US.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US"
 
 # install python and modules, needed for ansible
-apt-get install -qy python
+apt-get install -qy python python3-dev
 
 # remove unused services
 rm -rf /etc/service/syslog-ng
 rm -rf /etc/service/cron
-
