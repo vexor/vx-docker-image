@@ -2,6 +2,7 @@
   get_url: >
     url=https://s3-eu-west-1.amazonaws.com/assets-eu0-vexor-io/files.vexor.io/{{ item }}
     dest=/tmp/{{ item }}
+    validate_certs=no
   with_items:
   - libqtwebkit4_2.3.2-0ubuntu7_amd64.deb
   - libqtwebkit-dev_2.3.2-0ubuntu7_amd64.deb

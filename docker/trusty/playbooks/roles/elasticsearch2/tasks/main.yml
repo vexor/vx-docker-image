@@ -4,7 +4,7 @@
   register: elasticsearch2_installed
 
 - name: download tar
-  get_url: dest={{elasticsearch2_tar}} url={{elasticsearch2_url}}
+  get_url: dest={{elasticsearch2_tar}} url={{elasticsearch2_url}} validate_certs=no
   when: elasticsearch2_installed.stdout == 'no'
 
 - name: remove existing elasticsearch2

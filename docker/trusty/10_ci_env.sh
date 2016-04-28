@@ -15,7 +15,7 @@ apt-get update
 apt-get install -qy software-properties-common
 apt-add-repository -y ppa:rquillo/ansible
 apt-get update
-apt-get install -qy ansible python-apt python-pycurl
+apt-get install -qy ansible python-apt python-pycurl ca-certificates
 
 ansible-playbook playbooks/site.yml -v -i playbooks/inventory -c local
 

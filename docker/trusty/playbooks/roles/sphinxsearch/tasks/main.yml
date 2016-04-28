@@ -2,6 +2,7 @@
   get_url: >
     url=http://sphinxsearch.com/files/sphinxsearch_{{ sphinxsearch_version }}-release-0ubuntu12~trusty_amd64.deb
     dest=/tmp/sphinxsearch_{{ sphinxsearch_version }}-release-0ubuntu12~trusty_amd64.deb
+    validate_certs=no
   register: sphinxsearch_download_result
 
 - name: install rquired packages

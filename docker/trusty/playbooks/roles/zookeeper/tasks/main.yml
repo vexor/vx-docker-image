@@ -4,7 +4,7 @@
   register: zookeeper_installed
 
 - name: download archive
-  get_url: dest={{zookeeper_tar}} url={{zookeeper_url}}
+  get_url: dest={{zookeeper_tar}} url={{zookeeper_url}} validate_certs=no
   when: zookeeper_installed.stdout == 'no'
 
 - name: unpack tar
@@ -29,4 +29,3 @@
   shell:
     touch {{zookeeper_root}}/v{{zookeeper_version}}
   when: zookeeper_installed.stdout == 'no'
-

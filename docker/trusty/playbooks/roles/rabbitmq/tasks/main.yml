@@ -2,6 +2,7 @@
   get_url: >
     url=http://mirror.yandex.ru/mirrors/rabbitmq/pool/main/r/rabbitmq-server/rabbitmq-server_{{rabbitmq_version}}_all.deb
     dest=/tmp/rabbitmq-server_{{rabbitmq_version}}_all.deb
+    validate_certs=no
 
 - name: install package
   shell: dpkg -i /tmp/rabbitmq-server_{{rabbitmq_version}}_all.deb

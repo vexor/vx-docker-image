@@ -4,7 +4,7 @@
   register: solr_installed
 
 - name: download archive
-  get_url: dest={{solr_tar}} url={{solr_url}}
+  get_url: dest={{solr_tar}} url={{solr_url}} validate_certs=no
   when: solr_installed.stdout == 'no'
 
 - name: unpack archive

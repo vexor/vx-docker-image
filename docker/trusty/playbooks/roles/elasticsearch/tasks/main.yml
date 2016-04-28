@@ -4,7 +4,7 @@
   register: elasticsearch_installed
 
 - name: download deb
-  get_url: dest={{elasticsearch_deb}} url={{elasticsearch_url}}
+  get_url: dest={{elasticsearch_deb}} url={{elasticsearch_url}} validate_certs=no
   when: elasticsearch_installed.stdout == 'no'
 
 - name: install deb

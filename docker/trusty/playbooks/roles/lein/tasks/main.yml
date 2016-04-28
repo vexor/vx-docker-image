@@ -4,6 +4,7 @@
     url="https://raw.github.com/technomancy/leiningen/stable/bin/lein"
     dest=/usr/local/bin/lein
     mode="0755"
+    validate_certs=no
   register: lein_download_result
 
 - name: "create symlink lein -> lein2"

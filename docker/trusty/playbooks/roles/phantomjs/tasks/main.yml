@@ -11,7 +11,7 @@
     - bzip2
 
 - name: download and unpack archive
-  shell: "curl -L {{phantomjs_url}} | tar -jxf - chdir=/opt"
+  shell: "curl -OL {{phantomjs_url}} && tar -jxf {{phantomjs_filename}} -C /opt && rm -f {{phantomjs_filename}}"
   tags: phantomjs
   when: phantomjs_installed.stdout == 'no'
 
